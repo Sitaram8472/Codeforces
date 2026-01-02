@@ -6,28 +6,30 @@ public class Q13 {
     int t = sc.nextInt();
     while (t-- > 0) {
       int n = sc.nextInt();
-      int[] num = new int[n];
+      long[] num = new long[n];
       for (int i = 0; i < n; i++) {
         num[i] = sc.nextInt();
       }
 
-      int ans = 0;
-      int curr = 0;
+      long ans = 0;
+      long curr = 0;
 
       for (int i = 0; i < n; i++) {
-        if (num[i] != 0) {
-          curr++;
-        } else {
-          if (curr > 0) {
-            ans++;
-          }
+        if (num[i] != 0 && curr == 0) {
+          curr = 1;
+          ans++;
+        }
+        if (num[i] == 0 && curr == 1) {
           curr = 0;
         }
       }
-      if (curr > 1) {
-        ans++;
+      if (ans == 0) {
+        System.out.println(0);
+      } else if (ans == 1) {
+        System.out.println(1);
+      } else {
+        System.out.println(2);
       }
-      System.out.println(ans);
 
     }
     sc.close();
